@@ -18,7 +18,7 @@ Kontroly: `php -l public/index.php`, `node --check public/app.js`, `python infra
 
 ## Stav šablony
 
-Galerie s filtrováním, responzivní rozložení a rezervace konkrétních volných termínů. SQLite, CSRF ochrana, validace, honeypot a interval mezi odesláními v rámci session. Čekající i potvrzené rezervace blokují termín; zamítnutí nebo zrušení ho uvolní. Transakce a unikátní index brání dvojí rezervaci i při souběžném odeslání. Fotografie jsou externí ukázky z Unsplash, fonty z Google Fonts.
+Galerie s filtrováním, responzivní rozložení a rezervace konkrétních volných termínů. SQLite, CSRF ochrana, validace, honeypot a interval mezi odesláními v rámci session. Čekající i potvrzené rezervace blokují termín; zamítnutí nebo zrušení ho uvolní. Transakce a unikátní index brání dvojí rezervaci i při souběžném odeslání. Fotografie jsou lokálně převzaté z původního Adobe Portfolia vlastníka; fonty z Google Fonts.
 
 Před ostrým sběrem osobních údajů doplnit vlastní fotografie, kontakty, informace o zpracování údajů, retenční dobu. Formulář je zatím výslovně označen jako vývojová ukázka pro testovací údaje.
 
@@ -75,3 +75,13 @@ Klient vybírá balíček a pouze jeho volné termíny. Server nezávisle ověř
 Původní termíny a rezervace se zachovají, včetně původní délky. Mají štítek Bez balíčku; teprve úpravou volného termínu se uplatní aktuální dvouhodinové pravidlo nebo zvolený balíček. Nové rezervace uchovávají název balíčku z okamžiku objednání. Pozdější přejmenování nezmění původní žádost.
 
 Nová žádost vytvoří zprávu fotografce (+ testovací kopii) a samostatné potvrzení přijetí klientovi (+ testovací kopii). Při potvrzení nebo zamítnutí přijde klientovi další zpráva. Migrace nerozesílá zpětně e-maily historickým rezervacím.
+
+## Portfolio převzaté z Adobe
+
+Zdroj: uživatelem autorizovaný přihlášený náhled Adobe Portfolio v Brave. Zdrojový Adobe web se neupravoval ani nepublikoval. Převzatých sedm kategorií: Brand, Mužský portrét, Portrét, Těhotenství, Auta, Párové focení, Rodina. Zachované také texty O mně, kontakty a původní blog. Neutrální černá/šedá/bílá nahrazuje zelené prvky na webu i v administraci.
+
+Obsah je v `app/data/portfolio.json`, optimalizované obrázky v `public/assets/portfolio/` (205 WebP souborů včetně náhledů; přibližně 29 MB). Veřejné galerie fungují bez přihlášení k Adobe. Původní kopie fotografií zůstávají lokálně v ignorovaném `storage/adobe-originals/`, nepatří do Gitu. Export z viditelného DOM je v ignorovaném `storage/adobe-source.json`; opakovaný import: `python infra/import-portfolio.py` a `php infra/optimize-portfolio.php`. Převzetí respektuje existující adresy obrázků z DOM, nehledá neveřejná API ani přihlašovací údaje.
+
+Navigace nového webu používá `/?gallery=SLUG` a `/?page=o-me|contact|blog`. Galerie má zvětšení fotek v dialogu, ovládání šipkami, Escape a vrácení focusu. Úvodní přehled kategorií má jemné přechody; `prefers-reduced-motion` je vypíná. Na mobilu je rozbalovací navigace. Původní Adobe videa, která jsou v převzatých datech, se načítají až po kliknutí na přehrání. Jejich dostupnost nadále závisí na původní službě Adobe.
+
+Balíčky a rezervační formulář jsou dostupné pod přehledem portfolia; administrace a SMTP fungují beze změny. Vstupní celoobrazovková fotografie zatím není součástí této úpravy, podle uživatelova odložení této části.

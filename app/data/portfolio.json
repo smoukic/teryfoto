@@ -1,0 +1,918 @@
+[
+  {
+    "slug": "brand",
+    "title": "Brand",
+    "text": "řezbář Jiří Bareš\nloutka I puppet\nreportérka Káťa Koubová\ndetail laptopu\npsaní na iPad\nrozhovor do reportáže\n\nzávodníci v Motorland Bělá\n\nnavigátor\nrally_navigator\ndetail závodní helmy\nsenior závodník Aleš Kaválek\n\nairsoft Na haldě\n\nairsofotový střelec\nairsofotový střelec II\n\nOffroad action Milovice\n\nSeb man Wella professional\nFun arena Praha\nBrand event Seaman\n\nBrand event Seb man Wella Professional \n\nEvent značky Nuskin, Michaela Leitnerová\n\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/0e820a22229c3657ea267893.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/916c2029cd8c59ca95d8be10.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ee33b94fcb2f05c7630ce5d3.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/022458fa672e5b3249726e7d.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/dd6fec50116067669242a750.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/499837996db161e2b173994b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e9edde5fd5630e9aa0d70371.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/9b3e98da8bee8c7c75b1b009.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/864129dbcf4f4881a0e22917.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e80aa2c9ac01697e789aa596.webp",
+        "alt": "řezbář Jiří Bareš"
+      },
+      {
+        "src": "/assets/portfolio/e85f75d5d2879943e59be803.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/771a2c7a54d031c79f49076e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/0e564017f7e860c885ad6ce2.webp",
+        "alt": "loutka I puppet"
+      },
+      {
+        "src": "/assets/portfolio/aeb5c17e595a5bb5642d655c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1b460b6e22a659394c0956c8.webp",
+        "alt": "reportérka Káťa Koubová"
+      },
+      {
+        "src": "/assets/portfolio/89db630a67d68569d35cfe55.webp",
+        "alt": "detail laptopu"
+      },
+      {
+        "src": "/assets/portfolio/86cba23a9181a3d4a5e17a14.webp",
+        "alt": "psaní na iPad"
+      },
+      {
+        "src": "/assets/portfolio/a8b0da78deb9b2683ef3d30a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/cff5483381da6e6ad2d58ede.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/b52c840599b68616e71c5708.webp",
+        "alt": "rozhovor do reportáže"
+      },
+      {
+        "src": "/assets/portfolio/d4aeaba5a70ff5164f73b389.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ee71eef9be7f3c4d25c1d97c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/37447aa9c1ff8677547f4206.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/052e3d4f9b6d22c57bcedd08.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/275a0a5c6ffe861645349c9e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/37de7f31c766de137e595f8e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a94607753763506765cd2f1d.webp",
+        "alt": "závodníci se usmívají"
+      },
+      {
+        "src": "/assets/portfolio/6870f595922efaf2338f5702.webp",
+        "alt": "navigátor"
+      },
+      {
+        "src": "/assets/portfolio/8bfe852321d61eed56616e4f.webp",
+        "alt": "rally_navigator"
+      },
+      {
+        "src": "/assets/portfolio/5407a6ab3160b16c1f013ffc.webp",
+        "alt": "detail závodní helmy"
+      },
+      {
+        "src": "/assets/portfolio/a6418c1f7f128a23fd4dca37.webp",
+        "alt": "senior závodník Aleš Kaválek"
+      },
+      {
+        "src": "/assets/portfolio/0908b853e0d2eeaf1c600811.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ba806626fe7244fc92e6fe86.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1659e45a70f0a0fa45a26aeb.webp",
+        "alt": "airsofotový střelec"
+      },
+      {
+        "src": "/assets/portfolio/91f6e36e3aa9c3765a183d24.webp",
+        "alt": "airsofotový střelec II"
+      },
+      {
+        "src": "/assets/portfolio/759b8ac182f3fc67cc3bec0b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ef0a57f0bbda13661f5dc863.webp",
+        "alt": "Seb man Wella professional"
+      },
+      {
+        "src": "/assets/portfolio/8d7429495f4cf236ec8edfd1.webp",
+        "alt": "Fun arena Praha"
+      },
+      {
+        "src": "/assets/portfolio/e97556304be00360909bc81d.webp",
+        "alt": "Brand event Seaman"
+      },
+      {
+        "src": "/assets/portfolio/8edd3c5af330aa8ec9787606.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/fe95b62d59a29898d2b0a5d3.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/ffb97521f0173ebaf5144a1e.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "muzsky-portret-2",
+    "title": "Mužský portrét",
+    "text": "Nemluvím\nNeslyším\nNevidím\nDomů\n↑Nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/5e11c44bbe5e37ec299e9504.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ca740da2f90a4492451e3ae3.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/7f2cbaa8a0fe59d50107a478.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ffbac653800d47ecb0afe650.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a0411e6c0433f82621cbcf9e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/dd32cd0ddb20cc102679d52a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/739a8dd1201e3573e9e9223e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/c9bad225c0bd1164ee5cbc7d.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/af69d77b8f74d2531a017736.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/617d816fdfb7a67db92d518e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/78d3566b5dabac4794a81a26.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ef3b616375a2eda03bc1b9c6.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a4d7e29189e3f3886d39812e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/579f78e5a33ad11207f50c91.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/230b9fc21471788639b5a4ab.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/7e6b28f5f8ccff87002c9a0f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/277e4566680dc21415b01a20.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/17b89c3b5eea5353d4286e2d.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/033bd56b37c5cb2e93c046e7.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/24b26ab614d75a2d44c251da.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d8c3292c40f4b38bdfabe1dc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e5343c2e9f94364afd80dddc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ab6e82e534f338347a2900a3.webp",
+        "alt": "Nemluvím"
+      },
+      {
+        "src": "/assets/portfolio/8f9359f8e71151d6066be13a.webp",
+        "alt": "Neslyším"
+      },
+      {
+        "src": "/assets/portfolio/cf73a80d01a9730198f4b554.webp",
+        "alt": "Nevidím"
+      },
+      {
+        "src": "/assets/portfolio/827198566d2230a8ff0a5e6f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ebd0d951a5000bd3bde89c6c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/f21a878bd48eebd15139c14c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/671d92f5dafb34e3bf80b3cb.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/7b2496387f463dee1f4d9c1b.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/322e83c8a62833de42f0eff6.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "portret",
+    "title": "Portrét",
+    "text": "Jak jsem svítila danou scénu.\n\n\n\n\nDomů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/890e7a729758842ed76660bb.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/6b52af0752cbda0ce32a31a6.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a953bd32b69e4a2c815673f9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/485a2ec9b49572a8dbaf9c43.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/b98e7728b5b0448dcbb588e8.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/350e12e5e556c187b567f68f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/5ce2dbc11ff7cc5b38f8621f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/faf9dd126bace05ac7b35687.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/53e46dcd51bc607a7dabc201.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/9123eb6938f86a71601dea77.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/6ebd8ca38d91b1d5015714b1.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/603b518743aabefd19f01edf.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1077571ac631f5a41f64f1f9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/738f9b1bf2830df3735dd533.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ca4edd1dd3a815c91b047ec9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d645ea600ce669bb6e0dc105.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/8e96aa9cd97ae0a4557d3ba3.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/679924503f491c933c626c53.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/89452900395bccf41d27a149.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/70901af6ec524364c3e72520.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/144b6052244c03e75e093ab1.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "tehotenstvi",
+    "title": "Těhotenství",
+    "text": "Domů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/6cbce0913bf1c2388853ab97.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d62854fd90bb9af18c46ab83.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/48add087ef2500359720d31a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/6507a692a84c1d2aad9e47c6.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e9311bfbafd3df69e09e1b99.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/c9d345c6554515c140664274.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/21731192de6174716a0d3f93.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/fc33014b26c06f5e043a9d30.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a747d5a20a32371f0be3c967.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/efd8b6fb2a1acc3ecbb1a349.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/81b6a44a9d52030dbafc0784.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/cc65e92f202c6b8eb9335857.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d3b8b43232a69b0d553149ac.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1a1a39b7f40e5c4eea5616c5.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/abc1efc8c50e90cd1b9525a8.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/88b904f6b92bdeb26b24ea01.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/4dc976b18126c2dcddd0dd36.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/1734c07ef0a2b286778e316e.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "auta",
+    "title": "Auta",
+    "text": "Mou velkou vášní je focení aut. \nProč se s partnerkou fotit jen v ateliéru nebo parku, když můžete mít sexy a neotřelé fotky s Vaším vozem.\nJe možné po dohodě domluvit exkluzivní vůz na focení. \nVyfotit Vás s např. ale s Vaší Fabií je taky výzva :D\n\n\nDomů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/8ffe6ee50dd11ae59cef4dc5.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/0a76878b01de6d6262bd607c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d5ce70d3f8aba5fddcf0db51.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a164209d565dbe8bfe99166f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/b0d3781b8b6d0f9e69f90a6b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/3a78122d8154cc27d554e206.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1267038c1941291779f575dd.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/0f552ac431b8aba909bdff3a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d366ca515b2ab6cbb8e200bd.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/f2700fbb8b0192c9e145fa4c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e6c9fa018b750dfb4e7ea5fb.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/b493a0500846f27c0baf559f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/4c01de904b7b924c84fba3ad.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/ba611d6eba03317665bb0431.webp",
+      "alt": ""
+    },
+    "embeds": [
+      "https://www-ccv.adobe.io/v1/player/ccv/FkkK9CNpK2T/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View"
+    ]
+  },
+  {
+    "slug": "parove-foceni",
+    "title": "Párové focení",
+    "text": "Domů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/f69a8e2e0d837815804b913b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/996df30ec27740e016253b9f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/9da339a5907d8b6dfdf4ebeb.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/09e3d0d542b8defb6f1d2b1b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/52d478f866640f04bc96714f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/0edc716e0777621d3a92e458.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/bf5b51fae52555046d1b22fa.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/056cec2d6b09e0da35e26337.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/78de8e31b515cdd2883546f4.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/56bfa4d25cf858074ecef6c4.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e4f82becbbb1bb24f7d523f9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/6e978fd430bc996c2bf62bb5.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/78afe442b0f044b9ba10d8a6.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/6255ed8471a3e982dfa976e7.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "rodina",
+    "title": "Rodina",
+    "text": "Domů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/08cc9d43348f75d0e450a895.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/11c7056dcbf46b608be96be8.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/8958a21aebb33853a5f2b0de.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/25cf761d5aa33746c687bfd1.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/176877798dd6eb84ab506027.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/791d1be76ec2b12e376baf7c.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/2c9b0934cdb1f08b090367dc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/8e573e579976ec94125e5e80.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1f73bcdc4a1370b9d19292b9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/373dc46adf53646a83f6aa7a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ed4475f9f75a10d3388792b8.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/bc427091cbfedd2ba60bdaf1.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a558a6e4ddd71c0f3464a153.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/5cb8355bb99fb17d889a5fa6.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/beb18426c2dfdba8fa88e399.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/62dbf72633dc405246cbcefc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e5884ae3f81981c71e41b224.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e92f67f1058c79521e2ca998.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/f5676376aeef13f92905acaf.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/f01309688d0231a2a8d82210.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/b66c48570c86ea85ab7a2051.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e57ff75571c2dafa36ec3972.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/da550ab19189b7db4ae3d927.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/4f860d373fd10323b83521e0.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/fecde2a0260ab57e84098ecf.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/23f47be8210c36acf12aca3a.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/53810fdf4d7429c401ea02ad.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/13edec01ca28866dd5d22375.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/cea959ed71005646bc0ca512.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d75d5aa9602c0bf529389eee.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1120395e2467133ab62820cc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/85277669a93afbb04a1481dc.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/bb67f2191d805372e2bef27b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/4c75ca96703fa8ea916251a0.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/cfaa957a66c509e60b00e337.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/de74e34613392732584f7b91.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d335101a79eb8b8e16e19d5d.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/1ea9deb49f6ac25c67b7ca53.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/77932107a46ecd4d3a57d903.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/7bb5092e91c85c77c4fb7f5c.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/767eec031c9d9c9b293f93ea.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "o-me",
+    "title": "O mně",
+    "text": "Vítejte na mém webu.\n\n\nJmenuji se Tereza Bradáčová a jsem BRAND fotografka tvořící v Hradci Králové a v Pardubicích.\nPůsobím též v marketingové agentuře a téma brandingu mi je velmi blízké.\nFotím malé firmy a podnikatele. Buď spolu tvoříme nový koncept a dáváte mi volnou ruku, nebo se řídíme Vaším BRAND manuálem.\nVždy se ale spolu domluvíme na perfektních fotkách pro Váš byznys či firmu, tak, aby Vás prezentovaly, jak potřebujete, aby jste byli v očích zákazníků nebo klientů ve správné pozici.\nFotografie Vám přinesou zisk, prestiž a správné postavení na trhu či Vám pomohou získat ty správné zaměstnance pro Vaši firmu.\n\nCo umím:\n\n👉🏻profesní portréty\n👉🏻autentické fotografie přímo od Vás z firmy\n👉🏻autentické fotografie zaměstnanců při práci I vhodné pro Váš kariérní web\n👉🏻konference\n👉🏻stylizované scénky\nDalší mojí láskou jsou experimentální portréty mužů a také focení aut. \nNapiš si o své focení\nfotografka\n↑Nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/848fde93abfe7fd8b193da63.webp",
+        "alt": "fotografka "
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/848fde93abfe7fd8b193da63.webp",
+      "alt": "fotografka "
+    },
+    "embeds": []
+  },
+  {
+    "slug": "contact",
+    "title": "Kontakt",
+    "text": "Tereza Bradáčová I BRAND fotografka\nHradec Králové a celá ČR \n e-mail: terezabradacova0@gmail.com\n\n\nIČO 07631693\n\n\nZajímá tě cena na jiný druh focení, který není uvedený v ceníku? \nVolej, piš, nebo použij kontaktní formulář.\nJméno *\nE-mail *\nZpráva *\nRecenze ( zpětná vazba od tebe)\nOdeslat\n \n \nDomů\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/d308cf334c82e03e1b617448.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/2e37467ae0fd011ea3111048.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/d308cf334c82e03e1b617448.webp",
+      "alt": ""
+    },
+    "embeds": []
+  },
+  {
+    "slug": "blog",
+    "title": "Blog",
+    "text": "15.9.2023\nBRAND - nedílná součást každé firmy i osoby\n\n\nAčkoliv Vám to někdy nemusí na první pohled připadat, každý si budujeme vlastní brand. Ať osobní, profesní či firemní. S tím profesním mne oslovila Kačka, která pracuje v novinové redakci, ale čím dál tím více tíhne k vlastním projektům a psaní.\nNatáčí reportáže, stříhá videa, tvoří rozhovory, věnuje se PR a píše články.\nZadání znělo jasně: \"Chci fotky v přírodě a chci, aby byly světlé. Barevně musí ladit s mým novým webem.,,\nNapadlo mě, aha, ok, vezmeme stůl a uděláme ti pracovní scénu buď v lese či v sadu, který měla za domem.\nKačka byla z nápadu nadšená. Za týden už jsem stála před její verandou. Našla jsem vhodné místo pro focení, nastavila světlo, odraznou desku, připravila na stůl propriety. Začaly jsme fotit. Nechala jsem Kačku pracovat, přemýšlet, rozjímat, psát.\nMezitím jsem si chodila okolo a fotila. Důležité byly i detaily, potřebovala je pro webové stránky. Použila je pro kontaktní sekci na webu.\nDále je může použít např. pro úvodní fotografii na LinkedIn, sociální sítě apod.\n,,Terku jsem oslovila, jelikož jsem zoufale potřebovala nové fotky naweb a sítě. Chtěla jsem něco. co by odráželo můj nový projekt.A to se povedlo na výbornou! Terka vymyslela úžasný koncept,poradila mi s pozicemi, které více lichotí mé postavě.Výsledkem jsou úžasné fotky, které jsou kvalitní a odrážejí můj projekt.\"\nPotom už jen následoval výběr od Kačky, a má následná retuš a úprava tonality. Nyní je má Kačka na svém novém webu, a je z nich nadšená.\n7.7.2023\nJak fotím BRAND já\n\n\nPojďte, ukáži Vám, jak jsem fotila profesní BRAND fotografie loutkaři - řezbáři, Jiřímu Barešovi.\n\"Terezko, jsou krásný! Ani jsem to nečekal!,,\n\n\nTo byla první slova, která mi Jiří poslal, při odeslání prvních hotových fotografií.\n\n\nJirka pracoval jako loutkař - řezbář, více jak 30 let života.\nVětšinu loutek, co vídáte v divadle Drak, prošlo v Jiřího rukách. Mistr v oboru a přitom tak skromný a milý.\nI kapacita, jako je Jirka, potřebuje BRAND fotografie pro vlastní prezentaci. \nMůže je použít např. na sociální sítě, na své webové stránky nebo třeba do různých tištěných publikací.\nJak už to u mne tak bývá, chtěla jsem fotky vyfotit vyjímečně.\nChtěla jsem v nich zachytit dynamičnost, světlo a kontrast.\nJiřího najdete na stránkách níže, nevyrábí pouze loutky, tvoří také sochy, obrazy a věnuje se hudbě. Ale o tom třeba zase příště v nějakém z mých fotopříběhů.\n\n\n\n\n\n\n\n\n\n\n__________________________________________________________________\n\n\nVideonávod  pro fotografy zdarma.\nPokud chceš vědět jak sladit pleť miminka, tak se koukni na toto video, ve kterém tě krok po kroku provedu, jak na to. \nDomů\n↑Zpět nahoru\n(c) BRAND fotografka Tereza Bradáčová",
+    "images": [
+      {
+        "src": "/assets/portfolio/ae4a7ce097dda1c1acb809b6.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/9e35eff3de83bd07406af603.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a266183c9712e230e20e020b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/be49a834ff23fd91757b8a4f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/74bebf32ba9d4f7364fcdc0b.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/81c8556b885086580ec015df.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/e96ee9a54b80b4208e5458a5.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/42345e6055ad2ef5b8d725fb.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/d237672a6dbc2fe63732da46.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/534629e0be89bd7a98abcf52.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ee1650d17670082e02fac4f1.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a97701b4e4c4f082df331f65.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/9839c05e27395cf754ef5b1d.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/fbee1060e157d01ed381d5a4.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/dc41abd006fdd9d9d325c8e9.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/7771a83997bacd5bfd933f5e.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/ef32e6fca4f808d729f15ad7.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/a987f4c5763eb583914e9fa8.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/72ac8df27955245906627b20.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/239d61baa257690d5e85299f.webp",
+        "alt": ""
+      },
+      {
+        "src": "/assets/portfolio/2c6a6ff3cd6d0fe30b8808a1.webp",
+        "alt": ""
+      }
+    ],
+    "cover": {
+      "src": "/assets/portfolio/ae4a7ce097dda1c1acb809b6.webp",
+      "alt": ""
+    },
+    "embeds": [
+      "https://www-ccv.adobe.io/v1/player/ccv/2tyujAazBuy/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View"
+    ]
+  }
+]

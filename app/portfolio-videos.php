@@ -1,0 +1,1 @@
+<?php foreach (($videoPage['embeds'] ?? []) as $video): ?><div class="portfolio-video"><button type="button" class="secondary-button" data-video="<?= e($video) ?>">▶ Přehrát původní video</button><p class="demo-note">Po spuštění se načte přehrávač Adobe z původního portfolia.</p></div><?php endforeach; ?>
