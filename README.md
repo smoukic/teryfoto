@@ -85,3 +85,9 @@ Obsah je v `app/data/portfolio.json`, optimalizované obrázky v `public/assets/
 Navigace nového webu používá `/?gallery=SLUG` a `/?page=o-me|contact|blog`. Galerie má zvětšení fotek v dialogu, ovládání šipkami, Escape a vrácení focusu. Úvodní přehled kategorií má jemné přechody; `prefers-reduced-motion` je vypíná. Na mobilu je rozbalovací navigace. Původní Adobe videa, která jsou v převzatých datech, se načítají až po kliknutí na přehrání. Jejich dostupnost nadále závisí na původní službě Adobe.
 
 Balíčky a rezervační formulář jsou dostupné pod přehledem portfolia; administrace a SMTP fungují beze změny. Vstupní celoobrazovková fotografie zatím není součástí této úpravy, podle uživatelova odložení této části.
+
+## Přesné pořadí fotografií
+
+Galerie zachovávají původní řádky Adobe, nikoli rozdělení do CSS sloupců. `rows` v `app/data/portfolio.json` určuje pořadí indexů, proporce jednotlivých snímků a šířku původního řádku. Na mobilu se řádek skládá do jednoho sloupce ve stejném pořadí zleva doprava. Zvětšený prohlížeč používá totožnou posloupnost.
+
+Rozložení bylo načteno z viditelného DOM sedmi galerií v Adobe editoru. Lokální export je v `storage/adobe-order-layout.json`; aplikuje jej `python infra/apply-portfolio-order.py`. Import vyžaduje tento export a aplikuje jej automaticky, aby další převzetí fotografií neztratilo schválené pořadí. Před i po úpravě se kontroluje shoda všech fotografií bez ztrát či duplicit.

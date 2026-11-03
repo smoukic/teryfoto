@@ -42,6 +42,9 @@ if portfolio_file.exists():
         assert status == 200 and page['title'] in body
         if query_key == 'gallery':
             assert body.count(' data-photo=') == len(page['images'])
+            assert re.findall(r'data-photo="([^"]+)"', body) == [photo['src'] for photo in page['images']]
+            assert [index for row in page['rows'] for index in row['images']] == list(range(len(page['images'])))
+            assert all(len(row['images']) == len(row['weights']) == len(row['ratios']) for row in page['rows'])
         for photo in page['images'] + [page['cover']]:
             assert (portfolio_file.parents[2] / 'public' / photo['src'].lstrip('/')).is_file()
         assert request('GET', page['cover']['src'])[0] == 200

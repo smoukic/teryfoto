@@ -5,10 +5,14 @@ import html
 import json
 from pathlib import Path
 import re
+import subprocess
+import sys
 import urllib.request
 
 root = Path(__file__).resolve().parents[1]
 source = json.loads((root/'storage/adobe-source.json').read_text(encoding='utf-8'))
+if not (root/'storage/adobe-order-layout.json').is_file():
+    raise SystemExit('Rendered Adobe row layout export is required to preserve photograph order.')
 target = root/'public/assets/portfolio'
 target.mkdir(parents=True,exist_ok=True)
 
@@ -65,3 +69,5 @@ for page in source['pages']:
 (root/'app/data/portfolio.json').write_text(json.dumps(pages,ensure_ascii=False,indent=2),encoding='utf-8')
 print('Imported '+str(len(results))+'/'+str(len(tasks))+' assets; '+str(sum(len(p['images']) for p in pages))+' gallery images.')
 if len(results)!=len(tasks): raise SystemExit(1)
+
+subprocess.run([sys.executable,str(root/'infra/apply-portfolio-order.py')],check=True)
