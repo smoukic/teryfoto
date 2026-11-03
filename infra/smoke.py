@@ -1,5 +1,4 @@
-"""HTTP checks: python infra/smoke.py 127.0.0.1 teryfoto"""
-import datetime
+"""Read-only deployment checks: python infra/smoke.py 127.0.0.1 teryfoto"""
 import http.client
 import re
 import sys
@@ -27,12 +26,9 @@ assert status == 200 and 'Teryfoto' in body
 token = re.search(r'name="csrf" value="([a-f0-9]+)"', body)[1]
 assert request('POST', '/', {'csrf': 'wrong'})[0] == 400
 assert request('POST', '/', {'csrf': token})[0] == 422
-data = dict(csrf=token, name='Automated smoke test', email='smoke@example.invalid',
-            date=str(datetime.date.today() + datetime.timedelta(days=30)),
-            type='Portrét', note='Testovací poptávka – kontrola nasazení.', consent='on')
-assert request('POST', '/', data)[0] == 303
-assert 'Poptávka je uložená' in request('GET', '/?sent=1')[1]
-assert request('POST', '/', data)[0] == 429
-for path in ['/storage/requests.sqlite', '/.git/config']:
+status, body = request('GET', '/?admin=1')
+assert status == 200 and 'Přihlášení' in body and 'reservation-list' not in body
+assert request('POST', '/?admin=1', {'csrf': token, 'action': 'save_slot'})[0] == 401
+for path in ['/storage/requests.sqlite', '/storage/admin.json', '/storage/initial-admin.txt', '/app/bootstrap.php', '/.git/config']:
     assert request('GET', path)[0] in (403, 404)
-print(host + ': OK (page, CSRF, validation, SQLite insert, confirmation, throttle, private files)')
+print(host + ': OK (page, CSRF, validation, admin login, authorization, private files)')
