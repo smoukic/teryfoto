@@ -87,7 +87,7 @@ function queue_booking_mail(int $id, string $kind): void {
 function cancel_pending_decisions(int $id): void {
     query("UPDATE mail_outbox SET status='cancelled',last_error='' WHERE request_id=? AND event_kind IN ('confirmed','rejected') AND status IN ('pending','failed')", [$id]);
 }
-function send_smtp_message(array $config, array $message): void {
+function smtp_mailer(array $config): PHPMailer\PHPMailer\PHPMailer {
     require_once dirname(__DIR__) . '/vendor/autoload.php';
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     $mail->isSMTP(); $mail->Host = $config['host']; $mail->Port = (int)$config['port'];
@@ -98,6 +98,10 @@ function send_smtp_message(array $config, array $message): void {
     $mail->CharSet = 'UTF-8'; $mail->Encoding = 'base64';
     $mail->setFrom($config['from_email'], $config['from_name']);
     $mail->addReplyTo($config['photographer_email'], 'Teryfoto');
+    return $mail;
+}
+function send_smtp_message(array $config, array $message): void {
+    $mail = smtp_mailer($config);
     $mail->addAddress($message['recipient']);
     $mail->Subject = $message['subject']; $mail->Body = $message['body'];
     // Stable ID helps recipients identify a retry of the same queued message.
