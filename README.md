@@ -42,9 +42,9 @@ Migrace databáze probíhá automaticky při prvním požadavku. Před aktualiza
 
 ## SMTP a automatické e-maily
 
-V administraci v sekci **E-maily a SMTP** je přednastaven `wes1-smtp.wedos.net`, port 587 a STARTTLS. Lze přepnout na SSL/TLS port 465. Doplňte celou adresu schránky jako uživatelské jméno, její heslo a povolenou adresu odesílatele. Adresa příjemce Gmail není automaticky odesílací schránkou u WEDOS. Nastavení každého prostředí je samostatné a automatické odesílání je výchozí vypnuté.
+V administraci v samostatné záložce **E-maily a SMTP** (`/?admin=1&section=smtp`) je přednastaven `wes1-smtp.wedos.net`, port 587 a STARTTLS. Lze přepnout na SSL/TLS port 465. Doplňte celou adresu schránky jako uživatelské jméno, její heslo a povolenou adresu odesílatele. Adresa příjemce Gmail není automaticky odesílací schránkou u WEDOS. Nastavení každého prostředí je samostatné a automatické odesílání je výchozí vypnuté.
 
-Upozornění na novou rezervaci jde na `terezabradacova0@gmail.com` a ve výchozím testovacím režimu také na `jan@rulc.eu`. Potvrzení/zamítnutí jde klientovi a v testovacím režimu má samostatnou kopii `jan@rulc.eu`. Všichni dostávají samostatné zprávy bez sdílených seznamů příjemců. Interní poznámky se nikdy neposílají. Příjemci i přepínač testovacích kopií jsou upravitelní v administraci. Změny adres se týkají nově vznikajících zpráv; původní neodeslané zprávy je možné zrušit v přehledu.
+Upozornění na novou rezervaci jde na `terezabradacova0@gmail.com` a ve výchozím testovacím režimu také na `jan@rulc.eu`. Potvrzení přijetí žádosti i následné potvrzení/zamítnutí jde klientovi a v testovacím režimu má samostatnou kopii `jan@rulc.eu`. Všichni dostávají samostatné zprávy bez sdílených seznamů příjemců. Potvrzení přijetí výslovně říká, že termín ještě není schválený. Interní poznámky se nikdy neposílají. Příjemci i přepínač testovacích kopií jsou upravitelní v administraci. Změny adres se týkají nově vznikajících zpráv; původní neodeslané zprávy je možné zrušit v přehledu.
 
 SMTP heslo je šifrované AES-256-GCM v `storage/smtp.json`. Klíč je `storage/smtp.key` (660), worker token `storage/mail-worker.token` (660). Zálohujte nastavení i klíč společně do zabezpečené zálohy. Žádný z těchto souborů není v Gitu ani ve veřejném adresáři. Heslo se nevrací do HTML, prázdné heslo při uložení ponechá původní hodnotu. Šifrování nechrání před kompromitovaným účtem PHP, který má přístup i ke klíči.
 
@@ -61,3 +61,17 @@ Lokálně se zprávy zpracovávají při rezervaci, změně stavu a testu; pro z
 ### Testy
 
 `python infra/test-mail.py` používá pouze lokální testovací SMTP a dočasnou databázi. Ověřuje skutečné TLS s důvěryhodným testovacím certifikátem, SMTP autentizaci, obsah zpráv, příjemce, šifrování hesla, opakování, neduplikování stavů a izolaci chyb. Žádný test neodesílá poštu do internetu. `composer audit --no-interaction` kontroluje známé zranitelnosti závislostí.
+
+## Balíčky a plánování focení
+
+Web i administrace používají tmavý vzhled. Administrace má oddělené záložky Rezervace, Termíny, Balíčky, E-maily a SMTP, Účet. Čekající žádosti zvýrazňuje společný banner, počet v navigaci a tlačítka Potvrdit/Zamítnout u žádosti.
+
+Výchozí balíčky vzniknou při migraci: Minibalíček 60 minut, Velký balíček 120 minut, Brand s individuální domluvou bez pevné délky. V administraci lze balíčky přidávat, měnit název a popis a skrývat z nabídky. Délku a individuální režim nelze změnit, pokud má balíček budoucí termíny; pro jinou délku vytvořte nový balíček. Žádná cena není předvyplněná.
+
+U termínu se zadává začátek a balíček; konec počítá server podle délky. Bez balíčku má nový termín 120 minut. Počet 1–20 vytvoří navazující termíny stejného balíčku, v jedné transakci. Při jakémkoli překryvu se neuloží žádný z nich. Pro více dní přidejte samostatnou sérii v každém dni. Například dvě Velká focení od 9:00 vytvoří 9–11 a 11–13, dvě Mini focení od 14:00 vytvoří 14–15 a 15–16.
+
+Klient vybírá balíček a pouze jeho volné termíny. Server nezávisle ověřuje shodu, aktivní nabídku i dostupnost. Bez balíčku se nabízejí jen termíny bez balíčku. Brand a další individuální balíčky nemají výběr data, vyžadují popis představy a lze o ně požádat bez vypsaných termínů. Fotografka je může potvrdit či zamítnout jako individuální domluvu. Na individuální balíček nelze vypisovat ani přiřazovat pevné termíny.
+
+Původní termíny a rezervace se zachovají, včetně původní délky. Mají štítek Bez balíčku; teprve úpravou volného termínu se uplatní aktuální dvouhodinové pravidlo nebo zvolený balíček. Nové rezervace uchovávají název balíčku z okamžiku objednání. Pozdější přejmenování nezmění původní žádost.
+
+Nová žádost vytvoří zprávu fotografce (+ testovací kopii) a samostatné potvrzení přijetí klientovi (+ testovací kopii). Při potvrzení nebo zamítnutí přijde klientovi další zpráva. Migrace nerozesílá zpětně e-maily historickým rezervacím.

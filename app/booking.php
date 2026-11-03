@@ -13,9 +13,12 @@ try {
         catch (DomainException $e) { http_response_code(422); throw $e; }
         $_SESSION['last_request'] = time();
         dispatch_mail_safely();
-        flash('Rezervace je uložená a čeká na potvrzení fotografkou. Termín pro vás zatím držíme. O potvrzení nebo zamítnutí vás budeme informovat e-mailem.');
+        flash('Rezervace je uložená a čeká na potvrzení fotografkou. Potvrzení přijetí žádosti vám přijde e-mailem. O potvrzení nebo zamítnutí vás budeme informovat e-mailem.');
         redirect('/#rezervace');
     }
     $slots = available_slots();
 } catch (DomainException $e) { $message = $e->getMessage(); $success = false; $slots = available_slots(); }
 catch (Throwable $e) { error_log('Booking failure: ' . $e->getMessage()); http_response_code(503); $message = 'Rezervace jsou dočasně nedostupné. Zkuste to prosím později.'; $success = false; }
+
+$publicPackages = packages(true);
+$selectedPackage = (string)($_POST['package_id'] ?? $_GET['package'] ?? '');

@@ -105,7 +105,7 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             check(admin.post(dict(action='assign', request_id=1, slot_id=2))[0] == 303, 'legacy assignment')
             check(admin.post(dict(action='status', request_id=1, status='confirmed', admin_note=''))[0] == 303, 'legacy confirmation')
             check(admin.post(dict(action='toggle_slot', slot_id=1))[0] == 303, 'close free slot')
-            check(not re.search(r'<option value="1"', Client(port).request()[1]), 'closed slot hidden')
+            check(not re.search(r'data-package="[^"]+" value="1"', Client(port).request()[1]), 'closed slot hidden')
             check(admin.post(dict(action='toggle_slot', slot_id=1))[0] == 303, 'reopen slot')
             # Race two independent PHP processes, using the same SQLite database.
             racer = Path(temp) / 'race.php'
@@ -118,7 +118,7 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             check('Nejprve uložte SMTP' in admin.post(dict(action='test_smtp'))[1], 'SMTP test requires configured account')
             settings = dict(action='save_smtp', host='wes1-smtp.wedos.net', port=587, encryption='tls', username='sender@example.invalid', smtp_password='test-private-password', from_email='sender@example.invalid', from_name='Teryfoto', photographer_email='terezabradacova0@gmail.com', test_email='jan@rulc.eu', test_copy='on')
             check(admin.post(settings)[0] == 303, 'save SMTP settings through admin')
-            smtp_page = admin.request(path='/?admin=1')[1]
+            smtp_page = admin.request(path='/?admin=1&section=smtp')[1]
             check('E-maily a SMTP' in smtp_page and 'test-private-password' not in smtp_page, 'SMTP password never rendered')
             check('test-private-password' not in (Path(temp)/'smtp.json').read_text(), 'SMTP secret encrypted on disk')
             check('Zkontrolujte SMTP' in admin.post(dict(settings,host='smtp.example.invalid;other.example.invalid'))[1], 'SMTP host injection rejected')
@@ -126,6 +126,43 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             anonymous.request(path='/?admin=1')
             check(anonymous.post(settings)[0] == 401, 'SMTP settings require authentication')
             subprocess.run(['php','infra/init-mail.php'],cwd=ROOT,env=env,check=True,capture_output=True)
+            # Package-specific slots and individual enquiries.
+            future = day + datetime.timedelta(days=1)
+            check(admin.post(dict(action='save_slot', starts_at=f'{future}T10:00', package_id=1, count=2))[0] == 303, 'mini batch')
+            mini = sql.execute('SELECT id,starts_at,ends_at FROM slots WHERE package_id=1 ORDER BY starts_at').fetchall()
+            check(len(mini)==2 and mini[0][2].endswith('11:00:00') and mini[1][2].endswith('12:00:00'), 'mini has one-hour duration')
+            check(admin.post(dict(action='save_slot', starts_at=f'{future}T12:00', package_id=2, count=2))[0]==303, 'large batch')
+            large = sql.execute('SELECT id,ends_at FROM slots WHERE package_id=2 ORDER BY starts_at').fetchall()
+            check(large[0][1].endswith('14:00:00') and large[1][1].endswith('16:00:00'), 'large has two-hour duration')
+            check(admin.post(dict(action='save_slot', starts_at=f'{future}T16:00', count=1))[0]==303, 'unpackaged slot')
+            check(sql.execute('SELECT ends_at FROM slots WHERE starts_at=?',(f'{future} 16:00:00',)).fetchone()[0].endswith('18:00:00'), 'unpackaged defaults to two hours')
+            before = sql.execute('SELECT COUNT(*) FROM slots').fetchone()[0]
+            check('překrývá' in admin.post(dict(action='save_slot',starts_at=f'{future}T08:00',package_id=1,count=4))[1], 'overlap in batch rejected')
+            check(sql.execute('SELECT COUNT(*) FROM slots').fetchone()[0]==before, 'batch rollback is atomic')
+            check('individuální' in admin.post(dict(action='save_slot',starts_at=f'{future}T20:00',package_id=3))[1], 'brand cannot have slots')
+            customer=Client(port); customer.request()
+            check(customer.post(dict(booking,package_id=1,slot_id=large[0][0]),admin=False)[0]==422,'package slot mismatch rejected')
+            check(customer.post(dict(booking,package_id=1,slot_id=mini[0][0]),admin=False)[0]==303,'mini booking')
+            mini_request=sql.execute('SELECT id,package_name FROM requests WHERE slot_id=?',(mini[0][0],)).fetchone()
+            check(mini_request[1]=='Minibalíček','package name snapshot')
+            brand=Client(port); brand.request()
+            check(brand.post(dict(booking,package_id=3,slot_id='',note=''),admin=False)[0]==422,'brand requires description')
+            check(brand.post(dict(booking,package_id=3,slot_id=mini[1][0],note='Brand photography'),admin=False)[0]==422,'brand must not reserve a timed slot')
+            check(brand.post(dict(booking,package_id=3,slot_id='',note='Brand photography'),admin=False)[0]==303,'individual request without time')
+            brand_id=sql.execute('SELECT id FROM requests WHERE is_individual=1').fetchone()[0]
+            check(admin.post(dict(action='quick_status',request_id=brand_id,status='confirmed'))[0]==303,'brand quick confirmation')
+            check(sql.execute('SELECT status FROM requests WHERE id=?',(brand_id,)).fetchone()[0]=='confirmed','brand confirmed without slot')
+            dashboard=admin.request(path='/?admin=1')[1]
+            check('žádostí čeká na vaše potvrzení' in dashboard,'prominent pending alert')
+            check('name="host"' not in dashboard,'SMTP form separated from reservations')
+            check('Minibalíček' in admin.request(path='/?admin=1&section=packages')[1],'package admin section')
+            check('Počet navazujících termínů' in admin.request(path='/?admin=1&section=slots')[1],'slot admin section')
+            check('délku ani způsob' in admin.post(dict(action='save_package',package_id=1,name='Minibalíček',duration_minutes=90,is_active='on'))[1],'cannot alter duration with future slots')
+            check(admin.post(dict(action='save_package',name='Nový balíček',description='Custom',duration_minutes=90,is_active='on'))[0]==303,'create custom package')
+            check(admin.post(dict(action='save_package',package_id=1,name='Mini nové jméno',duration_minutes=60))[0]==303,'hide package')
+            hidden=Client(port); hidden.request()
+            check(hidden.post(dict(booking,package_id=1,slot_id=mini[1][0]),admin=False)[0]==422,'hidden package not bookable')
+            check(sql.execute('SELECT package_name FROM requests WHERE id=?',(mini_request[0],)).fetchone()[0]=='Minibalíček','saved booking keeps original package name')
             other = Client(port)
             other.request(path='/?admin=1')
             other.post(dict(action='login', username='fotografka', password=password))
@@ -140,7 +177,7 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             for _ in range(10):
                 limiter.post(dict(action='login', username='fotografka', password='bad'))
             check(limiter.post(dict(action='login', username='fotografka', password='bad'))[0] == 429, 'persistent login throttling')
-            print('PASS: migration, login, CSRF, slots, overlap, validation, booking, concurrency, confirmation, cancellation, legacy assignment, XSS, SMTP administration, secret encryption, SMTP authorization, worker protection, password change, session invalidation, login throttling')
+            print('PASS: migration, login, CSRF, slots, overlap, validation, booking, concurrency, confirmation, cancellation, legacy assignment, packages, durations, atomic batches, individual Brand, package validation, dashboard alerts, separate SMTP, XSS, SMTP administration, secret encryption, SMTP authorization, worker protection, password change, session invalidation, login throttling')
         finally:
             sql.close()
             server.terminate()

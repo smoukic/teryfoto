@@ -72,11 +72,13 @@ function queue_booking_mail(int $id, string $kind): void {
     $booking = query('SELECT r.*,s.starts_at,s.ends_at,s.location FROM requests r LEFT JOIN slots s ON s.id=r.slot_id WHERE r.id=?', [$id])->fetch();
     if (!$booking) return;
     $date = $booking['starts_at'] ? slot_label($booking) : $booking['requested_date'];
-    $details = "Rezervace #$id\nJméno: {$booking['name']}\nFocení: {$booking['type']}\nTermín: $date\nČasová zóna: Praha (Europe/Prague)\n";
+    $details = "Rezervace #$id\nJméno: {$booking['name']}\nBalíček: {$booking['package_name']}\nFocení: {$booking['type']}\nTermín: $date\nČasová zóna: Praha (Europe/Prague)\n";
     if ($kind === 'new') {
         $subject = "Teryfoto — nová rezervace #$id";
         $body = "Přišla nová rezervace, která čeká na potvrzení.\n\n$details\nE-mail klienta: {$booking['email']}\nZpráva klienta:\n{$booking['note']}\n\nRezervaci vyřiďte v administraci Teryfoto.\n";
         foreach (mail_recipients($config) as $recipient) enqueue_message($id,$kind,$recipient,$subject,$body);
+        $receipt = "Dobrý den,\n\nvaši žádost o rezervaci jsme přijali. Toto je potvrzení přijetí žádosti, nikoli závazné potvrzení termínu. Fotografka se žádosti věnuje a o potvrzení nebo zamítnutí vám pošleme další e-mail.\n\n$details\nTeryfoto\n";
+        foreach (array_values(array_unique([$booking['email'], ...mail_recipients($config,true)])) as $recipient) enqueue_message($id,'received',$recipient,"Teryfoto — přijali jsme žádost o rezervaci #$id",$receipt);
     } elseif (in_array($kind, ['confirmed','rejected'], true)) {
         $confirmed = $kind === 'confirmed';
         $subject = 'Teryfoto — ' . ($confirmed ? 'potvrzení' : 'zamítnutí') . " rezervace #$id";
@@ -136,6 +138,6 @@ function process_mail_queue(int $limit = 3, bool $testOnly = false): array {
     return $result;
 }
 function dispatch_mail_safely(): void {
-    try { process_mail_queue(2); }
+    try { process_mail_queue(5); }
     catch (Throwable $e) { error_log('Teryfoto mail worker could not run; messages remain queued.'); }
 }
