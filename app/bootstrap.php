@@ -20,6 +20,8 @@ function db(): PDO {
         $db->exec("CREATE UNIQUE INDEX IF NOT EXISTS active_slot ON requests(slot_id) WHERE slot_id IS NOT NULL AND status IN ('pending','confirmed')");
         $db->exec('CREATE INDEX IF NOT EXISTS slot_dates ON slots(starts_at)');
         $db->exec('CREATE TABLE IF NOT EXISTS login_limits (bucket TEXT PRIMARY KEY, failures INTEGER NOT NULL, reset_at INTEGER NOT NULL)');
+        $db->exec("CREATE TABLE IF NOT EXISTS mail_outbox (id INTEGER PRIMARY KEY,request_id INTEGER REFERENCES requests(id),event_kind TEXT NOT NULL,recipient TEXT NOT NULL,subject TEXT NOT NULL,body TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'pending',attempts INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,sent_at TEXT,next_attempt INTEGER NOT NULL,locked_at INTEGER,last_error TEXT NOT NULL DEFAULT '')");
+        $db->exec('CREATE INDEX IF NOT EXISTS mail_due ON mail_outbox(status,next_attempt)');
         $db->exec('COMMIT');
     } catch (Throwable $e) { $db->exec('ROLLBACK'); throw $e; }
     return $db;
@@ -58,7 +60,9 @@ function create_booking(array $data): int {
         $slot = query("SELECT s.* FROM slots s WHERE s.id=? AND s.is_open=1 AND s.starts_at>? AND NOT EXISTS (SELECT 1 FROM requests r WHERE r.slot_id=s.id AND r.status IN ('pending','confirmed'))", [(int)($data['slot_id'] ?? 0), date('Y-m-d H:i:s')])->fetch();
         if (!$slot) throw new DomainException('Tento termín už není volný. Vyberte prosím jiný.');
         query("INSERT INTO requests (name,email,requested_date,type,note,created_at,slot_id,status) VALUES (?,?,?,?,?,?,?,'pending')", [$name,$email,substr($slot['starts_at'],0,10),$data['type'],$note,gmdate('c'),$slot['id']]);
-        return (int)db()->lastInsertId();
+        $id = (int)db()->lastInsertId();
+        queue_booking_mail($id, 'new');
+        return $id;
     });
 }
 function save_slot(array $data): void {
@@ -87,6 +91,10 @@ function set_booking_status(int $id, string $status, string $note): void {
             if (query("SELECT id FROM requests WHERE slot_id=? AND id<>? AND status IN ('pending','confirmed')", [$booking['slot_id'],$id])->fetch()) throw new DomainException('Tento termín už má jinou rezervaci.');
         }
         query('UPDATE requests SET status=?,admin_note=?,updated_at=? WHERE id=?', [$status,trim($note),gmdate('c'),$id]);
+        if ($booking['status'] !== $status) {
+            cancel_pending_decisions($id);
+            if (in_array($status, ['confirmed','rejected'], true)) queue_booking_mail($id, $status);
+        }
     });
 }
 function assign_booking(int $id, int $slotId): void {
@@ -95,6 +103,7 @@ function assign_booking(int $id, int $slotId): void {
         $slot = query("SELECT s.* FROM slots s WHERE s.id=? AND s.is_open=1 AND s.starts_at>? AND NOT EXISTS (SELECT 1 FROM requests r WHERE r.slot_id=s.id AND r.id<>? AND r.status IN ('pending','confirmed'))", [$slotId,date('Y-m-d H:i:s'),$id])->fetch();
         if (!$booking || !$slot) throw new DomainException('Rezervace nebo volný termín není dostupný.');
         query("UPDATE requests SET slot_id=?,requested_date=?,status='pending',updated_at=? WHERE id=?", [$slotId,substr($slot['starts_at'],0,10),gmdate('c'),$id]);
+        cancel_pending_decisions($id);
     });
 }
 function admin_config(): ?array {
@@ -111,3 +120,4 @@ function authenticated(?array $config): bool {
     if (!$config || !isset($_SESSION['admin_version'], $_SESSION['admin_seen']) || $_SESSION['admin_version'] !== $config['version'] || time() - $_SESSION['admin_seen'] > 3600) { unset($_SESSION['admin_version'], $_SESSION['admin_seen']); return false; }
     $_SESSION['admin_seen'] = time(); return true;
 }
+require_once __DIR__ . '/mail.php';

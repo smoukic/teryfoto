@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require __DIR__ . '/bootstrap.php';
+if (isset($_GET['mail_worker'])) { require __DIR__ . '/mail-worker.php'; exit; }
 start_session();
 if (isset($_GET['admin'])) { require __DIR__ . '/admin.php'; exit; }
 $message = take_flash(); $success = $message !== ''; $slots = [];
@@ -11,7 +12,8 @@ try {
         try { create_booking($_POST); }
         catch (DomainException $e) { http_response_code(422); throw $e; }
         $_SESSION['last_request'] = time();
-        flash('Rezervace je uložená a čeká na potvrzení fotografkou. Termín pro vás zatím držíme. E-mailové oznámení se automaticky neodesílá.');
+        dispatch_mail_safely();
+        flash('Rezervace je uložená a čeká na potvrzení fotografkou. Termín pro vás zatím držíme. O potvrzení nebo zamítnutí vás budeme informovat e-mailem.');
         redirect('/#rezervace');
     }
     $slots = available_slots();

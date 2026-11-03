@@ -113,6 +113,19 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             with concurrent.futures.ThreadPoolExecutor(2) as pool:
                 results = list(pool.map(lambda _: subprocess.run(['php', str(racer)], env=env, capture_output=True, text=True, check=True).stdout, range(2)))
             check(sorted(results) == ['booked', 'unavailable'], 'concurrent booking is exclusive')
+            check(Client(port).request(path='/?mail_worker=1')[0] == 404, 'mail worker not publicly accessible')
+            check(admin.post(dict(action='test_smtp'))[0] == 200, 'SMTP test without credentials stays in admin')
+            check('Nejprve uložte SMTP' in admin.post(dict(action='test_smtp'))[1], 'SMTP test requires configured account')
+            settings = dict(action='save_smtp', host='wes1-smtp.wedos.net', port=587, encryption='tls', username='sender@example.invalid', smtp_password='test-private-password', from_email='sender@example.invalid', from_name='Teryfoto', photographer_email='terezabradacova0@gmail.com', test_email='jan@rulc.eu', test_copy='on')
+            check(admin.post(settings)[0] == 303, 'save SMTP settings through admin')
+            smtp_page = admin.request(path='/?admin=1')[1]
+            check('E-maily a SMTP' in smtp_page and 'test-private-password' not in smtp_page, 'SMTP password never rendered')
+            check('test-private-password' not in (Path(temp)/'smtp.json').read_text(), 'SMTP secret encrypted on disk')
+            check('Zkontrolujte SMTP' in admin.post(dict(settings,host='smtp.example.invalid;other.example.invalid'))[1], 'SMTP host injection rejected')
+            anonymous = Client(port)
+            anonymous.request(path='/?admin=1')
+            check(anonymous.post(settings)[0] == 401, 'SMTP settings require authentication')
+            subprocess.run(['php','infra/init-mail.php'],cwd=ROOT,env=env,check=True,capture_output=True)
             other = Client(port)
             other.request(path='/?admin=1')
             other.post(dict(action='login', username='fotografka', password=password))
@@ -127,7 +140,7 @@ with tempfile.TemporaryDirectory(prefix='booking-test-', dir=ROOT / 'storage') a
             for _ in range(10):
                 limiter.post(dict(action='login', username='fotografka', password='bad'))
             check(limiter.post(dict(action='login', username='fotografka', password='bad'))[0] == 429, 'persistent login throttling')
-            print('PASS: migration, login, CSRF, slots, overlap, validation, booking, concurrency, confirmation, cancellation, legacy assignment, XSS, password change, session invalidation, login throttling')
+            print('PASS: migration, login, CSRF, slots, overlap, validation, booking, concurrency, confirmation, cancellation, legacy assignment, XSS, SMTP administration, secret encryption, SMTP authorization, worker protection, password change, session invalidation, login throttling')
         finally:
             sql.close()
             server.terminate()

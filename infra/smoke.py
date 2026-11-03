@@ -29,6 +29,7 @@ assert request('POST', '/', {'csrf': token})[0] == 422
 status, body = request('GET', '/?admin=1')
 assert status == 200 and 'Přihlášení' in body and 'reservation-list' not in body
 assert request('POST', '/?admin=1', {'csrf': token, 'action': 'save_slot'})[0] == 401
-for path in ['/storage/requests.sqlite', '/storage/admin.json', '/storage/initial-admin.txt', '/app/bootstrap.php', '/.git/config']:
+assert request('GET', '/?mail_worker=1')[0] == 404
+for path in ['/storage/requests.sqlite', '/storage/admin.json', '/storage/initial-admin.txt', '/storage/smtp.json', '/storage/smtp.key', '/storage/mail-worker.token', '/vendor/autoload.php', '/app/bootstrap.php', '/.git/config']:
     assert request('GET', path)[0] in (403, 404)
 print(host + ': OK (page, CSRF, validation, admin login, authorization, private files)')

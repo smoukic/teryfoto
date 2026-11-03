@@ -2,3 +2,4 @@
 !/storage/.gitkeep
 /.local/
 *.log
+/vendor/
