@@ -73,3 +73,19 @@ php artisan test
 
 Integrační test pokrývá vytvoření a úpravu galerie ve Filamentu, upload, ochranu heslem, vodoznak, odeslání výběru s poznámkou, export, smazání a stažení originálů i ZIPu.
 
+
+## Ceník, šablony a připomínky
+
+V administraci **Ceník a šablony** lze vytvářet balíčky, služby a jejich kategorie, způsoby doručení a texty. Šablony balíčku i textu se při výběru zkopírují do alba a lze je tam upravit. Ceníkové služby a doručení se přidávají jako nabídka pro klienta. Změnu nabídky od otevření stránky server zachytí před odesláním. Finální výběr v administraci vždy obsahuje uložený rozpis částek a zvolené položky.
+
+Ceny se zadávají v celých Kč. Balíček zahrnuje nastavený počet kusů, k ceně se připočítají kusy navíc a další položky. Cenová hladina používá celkový počet kusů jako hranici a určuje sazbu pro všechny kusy navíc. Dárkový poukaz a již zaplacená částka snižují doplatek nejvýše na nulu. Platební pokyny se klientovi zobrazí po odeslání při kladném doplatku.
+
+Nové výběrové galerie začínají v režimu jednoduchého výběru s jedním finálním odesláním. Hromadný režim dovolí více samostatných odeslání z téže galerie. Rozpracované volby zůstávají v prohlížeči až do odeslání.
+
+Připomínka je jednorázová a patří ke galerii s jednoduchým výběrem, nastaveným e-mailem a časem. Pro skutečné doručení nastavte poštovní transport (například SMTP) a každou minutu spouštějte Laravel scheduler pod uživatelem galerie, například pomocí cronu:
+
+```cron
+* * * * * cd /var/www/vybersi.rulc.eu && /usr/bin/php artisan schedule:run
+```
+
+Po nasazení nové verze spusťte migrace a znovu sestavte klienta.

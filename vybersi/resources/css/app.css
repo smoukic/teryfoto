@@ -60,3 +60,12 @@ dialog::backdrop { background: #141b16c0; }
     .card-body .flex { flex-wrap: wrap; }
 }
 @media (max-width: 365px) { .photo-grid { grid-template-columns: 1fr; } }
+.price-breakdown { border-top: 1px solid var(--line); padding-top: .7rem; font-size: .875rem; }
+.price-breakdown div { display: flex; justify-content: space-between; gap: .85rem; padding: .23rem 0; }
+.price-breakdown dd { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.price-breakdown .price-total { font-weight: 750; border-top: 1px solid var(--line); padding-top: .55rem; margin-top: .3rem; }
+.check-row { display: flex; gap: .6rem; align-items: start; margin-top: .65rem; font-size: .875rem; }
+.check-row input { margin-top: .2rem; accent-color: var(--green); }
+.terms { background: var(--paper); border-radius: .5rem; padding: .7rem; font-size: .875rem; }
+.terms summary { cursor: pointer; font-weight: 650; }
+.quantity { width: 5.5rem; }

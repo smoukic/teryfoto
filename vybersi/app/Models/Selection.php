@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Selection extends Model
 {
-    protected $fillable = ['submission_key', 'name', 'items'];
+    protected $fillable = ['submission_key', 'name', 'items', 'checkout'];
 
-    protected $casts = ['items' => 'array'];
+    protected $casts = ['items' => 'array', 'checkout' => 'array'];
 }

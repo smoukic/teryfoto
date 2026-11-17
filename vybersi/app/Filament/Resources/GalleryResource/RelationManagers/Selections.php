@@ -19,11 +19,12 @@ class Selections extends RelationManager
         return $table->columns([
             TextColumn::make('name')->label('Od koho')->searchable(),
             TextColumn::make('count')->label('Fotografie')->getStateUsing(fn (Selection $record) => count($record->items)),
+            TextColumn::make('checkout.totals.due')->label('K doplacení')->money('CZK', locale: 'cs'),
             TextColumn::make('created_at')->label('Odesláno')->dateTime('j. n. Y H:i')->sortable(),
         ])->defaultSort('created_at', 'desc')->recordActions([
             Action::make('detail')->label('Zobrazit výběr')
                 ->modalHeading(fn (Selection $record) => $record->name)
-                ->modalContent(fn (Selection $record) => view('admin.selection', ['items' => $record->items]))
+                ->modalContent(fn (Selection $record) => view('admin.selection', ['items' => $record->items, 'checkout' => $record->checkout ?? []]))
                 ->modalSubmitAction(false),
             Action::make('export')->label('Export TXT')->action(fn (Selection $record) => response()->streamDownload(
                 fn () => print(implode("\r\n", array_column($record->items, 'filename'))."\r\n"),
