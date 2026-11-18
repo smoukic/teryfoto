@@ -37,12 +37,12 @@ class CatalogResource extends Resource
             TextInput::make('name')->label('Název')->required()->maxLength(255),
             Select::make('category_id')->label('Kategorie')->options(fn () => CatalogEntry::options('category'))
                 ->searchable()->visible(fn (Get $get) => $get('kind') === 'service'),
-            self::money('details.price', 'Cena')->visible(fn (Get $get) => in_array($get('kind'), ['package', 'service', 'shipping'], true)),
+            self::money('details.price', 'Cena')->label(fn (Get $get) => $get('kind') === 'package' ? 'Cena balíčku' : 'Cena')->visible(fn (Get $get) => in_array($get('kind'), ['package', 'service', 'shipping'], true)),
             ...array_map(fn ($field) => $field->visible(fn (Get $get) => $get('kind') === 'package'), [
-                self::count('details.included', 'Fotografie v balíčku'),
-                self::money('details.extra', 'Cena za fotografii navíc'),
-                self::money('details.paid', 'Již zaplaceno'),
-                self::money('details.travel', 'Doprava na focení'),
+                self::count('details.included', 'Počet fotek v ceně balíčku'),
+                self::money('details.extra', 'Cena za fotku navíc')->helperText('Ponechte 0 Kč, pokud další fotky neúčtujete.'),
+                self::money('details.travel', 'Výchozí cena dopravy na focení')
+                    ->helperText('Volitelné. Částku můžete u konkrétního alba upravit.'),
             ]),
             Toggle::make('details.address')->label('Vyžadovat doručovací adresu')
                 ->default(false)->visible(fn (Get $get) => $get('kind') === 'shipping'),

@@ -29,17 +29,20 @@ class AlbumPricingTest extends TestCase
         $this->actingAs(User::factory()->create());
         Livewire::test(ManageCatalog::class)->callAction(TestAction::make('create'), data: [
             'kind' => 'package', 'name' => 'Portrét',
-            'details' => ['price' => 3500, 'included' => 8, 'extra' => 200, 'paid' => 0, 'travel' => 700],
+            'details' => ['price' => 3500, 'included' => 8, 'extra' => 200, 'travel' => 700],
         ])->assertHasNoActionErrors();
         $preset = CatalogEntry::sole();
+        $this->assertArrayNotHasKey('paid', $preset->details);
+        $preset->update(['details' => [...$preset->details, 'paid' => 900]]);
 
         Livewire::test(CreateGallery::class)
-            ->fillForm(['title' => 'Album', 'settings' => ['pricing' => ['enabled' => true]]])
+            ->fillForm(['title' => 'Album', 'settings' => ['pricing' => ['enabled' => true, 'paid' => 300]]])
             ->set('data.package_preset', $preset->id)
             ->call('create')->assertHasNoFormErrors()->assertRedirect();
         $gallery = Gallery::sole();
         $this->assertSame(3500, (int) $gallery->option('pricing.price'));
         $this->assertSame(8, (int) $gallery->option('pricing.included'));
+        $this->assertSame(300, (int) $gallery->option('pricing.paid'));
         $this->assertSame('single', $gallery->option('selection_type'));
     }
 

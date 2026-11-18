@@ -67,7 +67,7 @@ class AlbumSettings
                     ->visible($priced)->afterStateUpdated(function (Set $set, $state) {
                         $entry = CatalogEntry::where('kind', 'package')->find($state);
                         if ($entry) {
-                            foreach (['price', 'included', 'extra', 'paid', 'travel'] as $field) {
+                            foreach (['price', 'included', 'extra', 'travel'] as $field) {
                                 $set("settings.pricing.{$field}", $entry->details[$field] ?? 0);
                             }
                         }
@@ -76,7 +76,8 @@ class AlbumSettings
                     CatalogResource::money('settings.pricing.price', 'Cena balíčku'),
                     CatalogResource::count('settings.pricing.included', 'Fotografie v balíčku'),
                     CatalogResource::money('settings.pricing.extra', 'Cena za fotografii navíc'),
-                    CatalogResource::money('settings.pricing.paid', 'Již zaplaceno'),
+                    CatalogResource::money('settings.pricing.paid', 'Už uhrazeno za toto album')
+                        ->helperText('Zadejte jen skutečně přijatou platbu. Odečte se od doplatku klienta.'),
                     CatalogResource::money('settings.pricing.travel', 'Doprava na focení'),
                     CatalogResource::money('settings.pricing.shoot', 'Příplatek za focení'),
                     CatalogResource::money('settings.pricing.voucher', 'Hodnota dárkového poukazu'),
